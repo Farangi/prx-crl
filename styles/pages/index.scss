@@ -18,21 +18,17 @@
 
 .form {
   padding: 40px;
-  // width: 100%;
   min-width: 35vw;
   background-color: #FFFFFF;
   border-radius: 7px;
   display: flex;
   flex-direction: column;
-  // justify-content: space-evenly;
-  // align-items: flex-start;
 }
 
 .input-container {
   margin: 10px auto;
   display: flex;
   flex-direction: column;
-  // justify-content: flex-start;
   align-items: flex-start;
   font-size: 14px;
   width: 100%;
@@ -49,26 +45,58 @@
   box-sizing: border-box;
   padding: 15px 15px;
   width: 100%;
-  stroke: #D1D5DB;
+  border: 2px solid #D1D5DB;
   border-radius: 7px;
 }
 
-#login-btn {
-  // align-self: center;
-  padding: 12px 30px;
-  margin-top: 30px;
+.button {
+  position: relative;
+  padding: 8px 16px;
+  background: #4F47E5;
+  color: #FFFFFF;
   border: none;
-  border-radius: 7px;
-  color: #fff;
-  background-color: #4F47E5;
-  box-shadow: 2px 2px 2px #665ef2;
+  outline: none;
+  border-radius: 2px;
   cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.2s ease-in;
 }
 
-#login-btn:hover {
-  background-color: #4F47E5;
-  box-shadow: none;
-  transform: translateX(1px) translateY(1px);
+.button:active {
+  background: #5a52f9;
+}
+
+.button__text {
+  color: #ffffff;
+  font-size: medium;
+  transition: all 0.2s;
+}
+
+.button--loading .button__text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.button--loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 4px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
 }

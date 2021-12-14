@@ -10,12 +10,13 @@ block eod
 
 block content
   main(class="container")
-      h1(class="main-heading") Crawl Amazon product with us
-      form(class="form" method="POST" action="/product")
+      h1(class="main-heading") Crawl Amazon product with ProxyCrawl
+      form(id="main-form" class="form" method="POST" action="/product")
         div(class="input-container")
           label(class="label") ProxyCrawl Token
-          input(class="input" name="token" placeholder="Token")
+          input(class="input" name="token" placeholder="Token" required)
         div(class="input-container")
-          label(class="label") ProxyCrawl url
-          input(class="input" name="url" placeholder="https://www.amazon.com/Philips-Norelco-AT830-46-Frustration/dp/B00JITDVD2")
-        button(type="submit" id="login-btn") Start Crawling
+          label(class="label") Product url
+          input(class="input" name="url" placeholder="Enter product Url" required)
+        button(type="submit" class="button")
+          span(class="button__text") Start Crawling

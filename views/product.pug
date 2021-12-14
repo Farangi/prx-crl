@@ -10,13 +10,49 @@ block eod
 
 block content
   main
-    div Write your content here
     if error
-      p Ups there is an error, try again
-      p= error
+      div(class="container-prod")
+        p Ups there is an error, try again
+        p= error
     else
-      ul
-        li Check console output to see all available properties.
-        li= product.name
-        li= product.price
-        li= product.description
+      div(class="container-prod")
+        div(class="content-prod")
+
+          //- Product Header
+          div(class="prod-title")
+            div(class="image-container")
+              img(class="title-image" src=product.mainImage)
+
+            div(class="product-ratings-section")
+              a(class="product-name" href=`${product.canonicalUrl}` )=product.name
+              if product.description
+                p(class="product-description")=product.description
+              div(class="rating-main")
+                div(class="price-rating")
+                  p(class="price-container")=product.price
+                  div(class="star")
+                    div(class="clip-star")
+                    div(class="star-rating")=product.customerReview
+                  div(class="customer-review-count")=`(${product.customerReviewCount})`
+                if product.features.length
+                  div(class="product-features")
+                    ul(class="feature-list")
+                      each feature in product.features
+                        li
+                          span(class="feature-name")=`${feature}`
+
+
+          //- Product Reviews
+          div(class="product-details")
+            h3(class="title-h3") Reviews
+            div(class="reviews-container")
+              each item in product.reviews
+                div(class="review-card-container")
+                  div
+                    a(class="review-title" href=`${item.reviewLink}`)=item.reviewTitle
+                    p(class="review-content")=item.reviewText
+                  div(class="reviewer-deatails")
+                    a(class="reviewer-name" href=`${item.reviewerLink}`)=item.reviewerName
+
+
+          //- pre= JSON.stringify(product, null, 4)

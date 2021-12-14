@@ -1,0 +1,21 @@
+extends partials/layout
+
+block vars
+  - const title = 'Amazon Crawl';
+  - const pageID = 'index';
+
+block eod
+  script
+    +loadModule('pages/index.js')
+
+block content
+  main(class="container")
+      h1(class="main-heading") Crawl Amazon product with us
+      form(class="form" method="POST" action="/product")
+        div(class="input-container")
+          label(class="label") ProxyCrawl Token
+          input(class="input" name="token" placeholder="Token")
+        div(class="input-container")
+          label(class="label") ProxyCrawl url
+          input(class="input" name="url" placeholder="https://www.amazon.com/Philips-Norelco-AT830-46-Frustration/dp/B00JITDVD2")
+        button(type="submit" id="login-btn") Start Crawling
